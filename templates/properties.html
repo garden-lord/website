@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Hello {{ name }}</h1>
+
+<p>You have {{ properties | length }} properties</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>Address</th>
+        <th>Added</th>
+    </tr>
+    {% for property in properties %}
+    <tr>
+        <td>
+            {{ property["address"] }}
+        </td>
+        <td>
+            {{ property["added"] }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<h2>Add property</h2>
+<form action="/property" method="POST">
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input name="address" type="text" class="form-control" id="address" aria-describedby="addressHelp" placeholder="Enter address">
+        <small id="addressHelp" class="form-text text-muted">Where is it??.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
