@@ -28,7 +28,12 @@ app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = google_config["secret"]
 
 # Read in a .json file and use it as a simple database
 DB_FILE = 'database.json'
-database = json.load(open(DB_FILE, 'r+'))
+if not os.path.exists(DB_FILE):
+    # database file doesn't exist, make an empty one
+    database = {}
+else:
+    database = json.load(open(DB_FILE, 'r+'))
+
 
 # Call this to write the database back to the file
 def save():
