@@ -24,8 +24,10 @@ You need to set up a project so Google log ins will work. To do that, follow ste
 }
 ```
 
-Finally, run the server and see that it's working by going to [http://localhost:5000/](http://localhost:5000/) in your browser.
+Finally, run the server
 
 ```bash
 python server.py
 ```
+
+Check that it's working by going to [http://localhost:5000/](http://localhost:5000/) in your browser.
