@@ -20,10 +20,10 @@ app.register_blueprint(google_bp, url_prefix="/login")
 app.jinja_env.undefined = jinja2.StrictUndefined
 
 
-# Read the necessary info for Google logins
-google_config = json.load(open('google_config.json', 'r'))
-app.config["GOOGLE_OAUTH_CLIENT_ID"] = google_config["client_id"]
-app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = google_config["secret"]
+# # Read the necessary info for Google logins
+# google_config = json.load(open('google_config.json', 'r'))
+# app.config["GOOGLE_OAUTH_CLIENT_ID"] = google_config["client_id"]
+# app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = google_config["secret"]
 
 
 # Read in a .json file and use it as a simple database
@@ -41,15 +41,19 @@ def save():
     
 
 def get_user():
-    # If the user isn't logged in, send them to the login page
-    if not flask_dance.contrib.google.google.authorized:
-        return flask.redirect(flask.url_for("google.login"))
+    # # If the user isn't logged in, send them to the login page
+    # if not flask_dance.contrib.google.google.authorized:
+    #     return flask.redirect(flask.url_for("google.login"))
 
-    # Get the login info (email, name, etc.)
-    response = flask_dance.contrib.google.google.get("/oauth2/v1/userinfo")
-    assert response.ok, response.text
-    user_info = response.json()
-    return user_info
+    # # Get the login info (email, name, etc.)
+    # response = flask_dance.contrib.google.google.get("/oauth2/v1/userinfo")
+    # assert response.ok, response.text
+    # user_info = response.json()
+    # return user_info
+    return {
+        "email": "email@example.com",
+        "name": "Fake Person"
+    }
 
 
 @app.route("/")
