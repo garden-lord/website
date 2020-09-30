@@ -107,6 +107,7 @@ def add_property():
     email = login["email"]
     add_property_to_user(email, {
         "address": flask.request.values["address"],
+        "tenant_company": flask.request.values["tenant_company"],
         "added": datetime.datetime.now().strftime("%d/%m/%Y")
     })
 
